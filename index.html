@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hannah Pet Hospital | Brand Anthem</title>
+  <meta name="description" content="A cinematic Brand Anthem landing page for Hannah Pet Hospital." />
+
+  <style>
+    :root {
+      --ink: #101820;
+      --orange: #E87722;
+      --yellow: #FDD757;
+      --blue: #41B6E6;
+      --green: #43B02A;
+      --red: #C83E4D;
+      --stone: #f4f1ec;
+      --muted: #b9b2aa;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--ink);
+      color: white;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 20;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 6vw;
+      background: rgba(16, 24, 32, 0.82);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-transform: uppercase;
+      font-weight: 900;
+      letter-spacing: .22em;
+      font-size: 13px;
+    }
+
+    .brand-mark {
+      width: 42px;
+      height: 42px;
+      border-radius: 999px;
+      background: var(--orange);
+      display: grid;
+      place-items: center;
+      font-size: 22px;
+      letter-spacing: 0;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 30px;
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+    }
+
+    .nav-links a:hover { color: var(--yellow); }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 999px;
+      padding: 14px 20px;
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      transition: .2s ease;
+    }
+
+    .pill:hover { background: var(--orange); border-color: var(--orange); }
+    .pill.primary { background: var(--orange); border-color: var(--orange); }
+    .pill.primary:hover { background: var(--red); border-color: var(--red); }
+
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      align-items: end;
+      padding: 150px 6vw 90px;
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 25% 30%, rgba(232,119,34,.25), transparent 34%),
+        radial-gradient(circle at 80% 12%, rgba(65,182,230,.18), transparent 28%),
+        linear-gradient(180deg, #111827 0%, #101820 60%, #050607 100%);
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      opacity: .14;
+      background-image:
+        linear-gradient(rgba(255,255,255,.12) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.12) 1px, transparent 1px);
+      background-size: 72px 72px;
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 980px;
+    }
+
+    .eyebrow {
+      color: var(--yellow);
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: .42em;
+      text-transform: uppercase;
+      margin-bottom: 22px;
+    }
+
+    h1, h2, h3, p { margin-top: 0; }
+
+    h1 {
+      font-size: clamp(58px, 12vw, 154px);
+      line-height: .86;
+      letter-spacing: -.07em;
+      text-transform: uppercase;
+      font-weight: 900;
+      margin-bottom: 30px;
+    }
+
+    .hero p {
+      max-width: 680px;
+      color: #d3cbc2;
+      font-size: 20px;
+      line-height: 1.65;
+    }
+
+    .button-row { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 34px; }
+
+    section { padding: 105px 6vw; }
+
+    .section-dark { background: #050607; }
+    .section-light { background: var(--stone); color: var(--ink); }
+
+    .split {
+      display: grid;
+      grid-template-columns: .85fr 1.15fr;
+      gap: 70px;
+      max-width: 1240px;
+      margin: 0 auto;
+    }
+
+    h2 {
+      font-size: clamp(42px, 7vw, 92px);
+      line-height: .9;
+      letter-spacing: -.06em;
+      text-transform: uppercase;
+      font-weight: 900;
+    }
+
+    .video-frame {
+      max-width: 1240px;
+      margin: 0 auto;
+      position: relative;
+      overflow: hidden;
+      border-radius: 34px;
+      border: 1px solid rgba(255,255,255,.14);
+      min-height: 56vw;
+      max-height: 690px;
+      background:
+        linear-gradient(90deg, rgba(16,24,32,.88), rgba(16,24,32,.25)),
+        url('https://images.unsplash.com/photo-1601758063541-d2f50b4aafb2?q=80&w=1800&auto=format&fit=crop') center/cover;
+    }
+
+    .play-button {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 104px;
+      height: 104px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.45);
+      background: rgba(255,255,255,.12);
+      color: white;
+      font-weight: 900;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      backdrop-filter: blur(12px);
+      cursor: pointer;
+    }
+
+    .video-caption {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding: 40px;
+      background: linear-gradient(0deg, rgba(0,0,0,.92), transparent);
+      font-size: clamp(30px, 5vw, 64px);
+      line-height: .9;
+      letter-spacing: -.05em;
+      font-weight: 900;
+      text-transform: uppercase;
+      max-width: 850px;
+    }
+
+    .script-lines { display: grid; gap: 0; }
+    .script-line {
+      border-bottom: 1px solid rgba(255,255,255,.12);
+      padding: 28px 0;
+      font-size: clamp(28px, 5vw, 62px);
+      line-height: 1;
+      letter-spacing: -.05em;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    .copy-large {
+      font-size: 21px;
+      line-height: 1.65;
+      color: #4f4740;
+    }
+
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    .service-card {
+      background: white;
+      border: 1px solid #ddd3c9;
+      border-radius: 22px;
+      padding: 20px;
+      font-size: 13px;
+      font-weight: 900;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    .moments {
+      max-width: 1240px;
+      margin: 0 auto;
+    }
+
+    .moments-header {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 40px;
+      margin-bottom: 42px;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .moment-card {
+      min-height: 430px;
+      background: rgba(255,255,255,.055);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 34px;
+      padding: 30px;
+      transition: .25s ease;
+    }
+
+    .moment-card:hover { transform: translateY(-5px); background: rgba(255,255,255,.09); }
+
+    .icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 999px;
+      display: grid;
+      place-items: center;
+      background: var(--orange);
+      margin-bottom: 34px;
+      font-size: 22px;
+    }
+
+    .label {
+      color: var(--blue);
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: .28em;
+      text-transform: uppercase;
+    }
+
+    .moment-card h3 {
+      margin-top: 20px;
+      font-size: 34px;
+      line-height: .96;
+      letter-spacing: -.05em;
+      text-transform: uppercase;
+      font-weight: 900;
+    }
+
+    .moment-card p { color: var(--muted); line-height: 1.7; }
+
+    .marquee {
+      overflow: hidden;
+      background: #003C71;
+      border-top: 1px solid rgba(255,255,255,.12);
+      border-bottom: 1px solid rgba(255,255,255,.12);
+      padding: 30px 0;
+      white-space: nowrap;
+    }
+
+    .marquee span {
+      display: inline-block;
+      animation: marquee 28s linear infinite;
+      font-size: clamp(44px, 7vw, 96px);
+      font-weight: 900;
+      letter-spacing: -.06em;
+      text-transform: uppercase;
+    }
+
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    .quote-grid {
+      max-width: 1240px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 28px;
+    }
+
+    .quote-box, .stat-box {
+      background: rgba(255,255,255,.055);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 34px;
+      padding: 38px;
+    }
+
+    blockquote {
+      margin: 0;
+      font-size: clamp(32px, 5vw, 62px);
+      line-height: .96;
+      letter-spacing: -.055em;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .stat-box {
+      color: var(--yellow);
+      font-size: 32px;
+      line-height: .95;
+      letter-spacing: -.05em;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    .contact {
+      background: var(--orange);
+      color: white;
+    }
+
+    .contact-grid {
+      max-width: 1240px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    form {
+      background: var(--ink);
+      border-radius: 34px;
+      padding: 32px;
+      box-shadow: 0 30px 80px rgba(0,0,0,.25);
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      color: #aaa29a;
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+    }
+
+    input {
+      width: 100%;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.06);
+      border-radius: 14px;
+      color: white;
+      padding: 15px 16px;
+      margin-bottom: 18px;
+      font-size: 16px;
+    }
+
+    input:focus { outline: 1px solid var(--yellow); }
+
+    button.submit {
+      width: 100%;
+      border: none;
+      border-radius: 999px;
+      background: var(--yellow);
+      color: var(--ink);
+      padding: 17px 24px;
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      cursor: pointer;
+    }
+
+    footer {
+      padding: 34px 6vw;
+      color: #aaa29a;
+      font-size: 12px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      border-top: 1px solid rgba(255,255,255,.1);
+    }
+
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+      .split,
+      .quote-grid,
+      .contact-grid,
+      .card-grid { grid-template-columns: 1fr; }
+      .moments-header { display: block; }
+      .service-grid,
+      .stats { grid-template-columns: 1fr; }
+      section { padding: 78px 6vw; }
+      .video-frame { min-height: 72vw; }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="nav">
+    <a href="#top" class="brand" aria-label="Hannah Pet Hospital home">
+      <span class="brand-mark">h</span>
+      <span>Hannah<br><small>Pet Hospital</small></span>
+    </a>
+
+    <nav class="nav-links" aria-label="Main navigation">
+      <a href="#film">The Film</a>
+      <a href="#care">Care Model</a>
+      <a href="#moments">Moments</a>
+      <a href="#contact">Enroll</a>
+    </nav>
+
+    <a class="pill" href="#contact">Start Here</a>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="hero-content">
+        <div class="eyebrow">For every moment they're with us</div>
+        <h1>Life moves fast. Love stays close.</h1>
+        <p>A cinematic landing page for Hannah Pet Hospital’s Brand Anthem — built around the small, ordinary moments that become everything.</p>
+        <div class="button-row">
+          <a class="pill primary" href="#film">Watch the Anthem →</a>
+          <a class="pill" href="#care">Explore TLC</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="film" class="section-dark">
+      <div class="eyebrow" style="color: var(--blue); max-width:1240px; margin-left:auto; margin-right:auto;">The Film</div>
+      <h2 style="max-width:1240px; margin-left:auto; margin-right:auto;">Brand Anthem</h2>
+
+      <div class="video-frame" role="img" aria-label="Pet Parent and dog walking together">
+        <button class="play-button" type="button" onclick="alert('Replace this button with your embedded Brand Anthem video link.')">Play</button>
+        <div class="video-caption">And what matters most is right in front of you.</div>
+      </div>
+    </section>
+
+    <section>
+      <div class="split">
+        <div>
+          <div class="eyebrow" style="color: var(--green);">Anthem Script</div>
+          <h2>Small moments. Big meaning.</h2>
+        </div>
+
+        <div class="script-lines">
+          <div class="script-line">Life moves fast.</div>
+          <div class="script-line">It starts with small moments you don't think twice about.</div>
+          <div class="script-line">And somehow, they become everything.</div>
+          <div class="script-line">There's a rhythm to it. The same paths. The same pace.</div>
+          <div class="script-line">You don't expect things to change. Until one day, they do.</div>
+          <div class="script-line">And nothing else matters but getting them back on track.</div>
+          <div class="script-line">Life doesn't slow down. It just keeps moving.</div>
+          <div class="script-line">And what matters most is right in front of you.</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="care" class="section-light">
+      <div class="split">
+        <div>
+          <div class="eyebrow" style="color: var(--red);">Total Lifetime Care</div>
+          <h2>Care for the life between visits.</h2>
+        </div>
+
+        <div>
+          <p class="copy-large">Hannah’s membership model is designed to make high-quality Pet care more accessible, predictable, and connected — so Pet Parents can focus on love, not surprise costs.</p>
+          <div class="service-grid">
+            <div class="service-card">Routine + preventive care</div>
+            <div class="service-card">Urgent, illness + emergency care</div>
+            <div class="service-card">Dental care + surgery</div>
+            <div class="service-card">Medications + diagnostics</div>
+            <div class="service-card">Behavior support + training</div>
+            <div class="service-card">24/7 Hannah Helpline</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="moments">
+      <div class="moments">
+        <div class="moments-header">
+          <h2>Built around the moments Pet Parents remember.</h2>
+          <a class="pill" href="#contact">Become a Member →</a>
+        </div>
+
+        <div class="card-grid">
+          <article class="moment-card">
+            <div class="icon">♥</div>
+            <div class="label">The Morning Walk</div>
+            <h3>Same path. Same pace. Same joy.</h3>
+            <p>Care that protects the everyday rituals Pet Parents rely on.</p>
+          </article>
+
+          <article class="moment-card">
+            <div class="icon">✓</div>
+            <div class="label">The Unexpected Day</div>
+            <h3>When everything changes, cost should not lead the conversation.</h3>
+            <p>TLC Plans help Members focus on what their Pet needs next.</p>
+          </article>
+
+          <article class="moment-card">
+            <div class="icon">∞</div>
+            <div class="label">The Years Ahead</div>
+            <h3>For every moment they're with us, we're here for them.</h3>
+            <p>A lifetime care relationship built around trust, access, and love.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <div class="marquee" aria-hidden="true">
+      <span>Just add love • Preventive care • Emergency support • Behavior help • Dental care • Member partnership • Just add love • Preventive care • Emergency support • Behavior help • Dental care • Member partnership •</span>
+    </div>
+
+    <section>
+      <div class="quote-grid">
+        <div class="quote-box">
+          <blockquote>“For every moment they're with us, we're here for them.”</blockquote>
+        </div>
+
+        <div class="stats">
+          <div class="stat-box">No deductibles</div>
+          <div class="stat-box">No co-pays</div>
+          <div class="stat-box">No maximums</div>
+          <div class="stat-box">Care guidance 24/7</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact">
+      <div class="contact-grid">
+        <div>
+          <div class="eyebrow" style="color: rgba(255,255,255,.72);">Start the conversation</div>
+          <h2>Ready for care that keeps moving with life?</h2>
+        </div>
+
+        <form action="https://formspree.io/f/YOUR-FORM-ID" method="POST">
+          <label for="name">Name</label>
+          <input id="name" name="name" type="text" placeholder="Pet Parent name" required />
+
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" placeholder="you@example.com" required />
+
+          <label for="pet">Pet</label>
+          <input id="pet" name="pet" type="text" placeholder="Dog, Cat, or both" />
+
+          <button class="submit" type="submit">Request Membership Info</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © Hannah Pet Hospital. Portland, Oregon. Replace placeholder imagery/video before publishing.
+  </footer>
+</body>
+</html>
