@@ -3,646 +3,960 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hannah Pet Hospital | Brand Anthem</title>
-  <meta name="description" content="A cinematic Brand Anthem landing page for Hannah Pet Hospital." />
+  <title>Hannah Pet Hospital | Total Lifetime Care™</title>
+  <meta name="description" content="Hannah is here for them. Total Lifetime Care™ for the moments that matter most." />
 
   <style>
     :root {
-      --ink: #101820;
-      --orange: #E87722;
-      --yellow: #FDD757;
-      --blue: #41B6E6;
-      --green: #43B02A;
-      --red: #C83E4D;
-      --stone: #f4f1ec;
-      --muted: #b9b2aa;
+      --hannah-blue: #51b5e0;
+      --cream: #f6efe3;
+      --cream-2: #fffaf2;
+      --cream-3: #efe3d1;
+      --charcoal: #25211d;
+      --charcoal-2: #342d27;
+      --brown: #6d4c38;
+      --sage: #d9dfcf;
+      --white: #ffffff;
+      --muted: rgba(37, 33, 29, 0.72);
+      --light-muted: rgba(255, 250, 242, 0.76);
+      --shadow: 0 24px 70px rgba(37, 33, 29, 0.16);
+      --radius-xl: 38px;
+      --radius-lg: 28px;
+      --radius-md: 18px;
+      --max: 1180px;
     }
 
     * { box-sizing: border-box; }
+
     html { scroll-behavior: smooth; }
+
     body {
       margin: 0;
-      background: var(--ink);
-      color: white;
-      font-family: Arial, Helvetica, sans-serif;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--cream);
+      color: var(--charcoal);
+      line-height: 1.55;
     }
 
-    a { color: inherit; text-decoration: none; }
+    h1, h2, h3, .serif {
+      font-family: Georgia, "Times New Roman", serif;
+      font-weight: 500;
+      letter-spacing: -0.04em;
+      line-height: 0.98;
+    }
+
+    a { color: inherit; }
+
+    .page-shell { overflow: hidden; }
 
     .nav {
       position: fixed;
       top: 0;
       left: 0;
-      right: 0;
+      width: 100%;
       z-index: 20;
+      padding: 20px clamp(18px, 4vw, 56px);
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      padding: 18px 6vw;
-      background: rgba(16, 24, 32, 0.82);
-      backdrop-filter: blur(14px);
-      border-bottom: 1px solid rgba(255,255,255,0.1);
+      justify-content: space-between;
+      gap: 24px;
+      background: linear-gradient(180deg, rgba(20, 18, 16, 0.62), rgba(20, 18, 16, 0));
     }
 
     .brand {
-      display: flex;
+      display: inline-flex;
       align-items: center;
       gap: 12px;
-      text-transform: uppercase;
-      font-weight: 900;
-      letter-spacing: .22em;
-      font-size: 13px;
+      text-decoration: none;
+      color: var(--white);
+      font-weight: 800;
     }
 
-    .brand-mark {
-      width: 42px;
-      height: 42px;
-      border-radius: 999px;
-      background: var(--orange);
-      display: grid;
-      place-items: center;
-      font-size: 22px;
-      letter-spacing: 0;
+    .brand-logo {
+      height: 44px;
+      width: auto;
+      object-fit: contain;
     }
 
     .nav-links {
       display: flex;
-      gap: 30px;
-      font-size: 11px;
-      font-weight: 900;
-      letter-spacing: .22em;
-      text-transform: uppercase;
-    }
-
-    .nav-links a:hover { color: var(--yellow); }
-
-    .pill {
-      display: inline-flex;
       align-items: center;
-      justify-content: center;
-      border: 1px solid rgba(255,255,255,0.25);
-      border-radius: 999px;
-      padding: 14px 20px;
-      font-size: 12px;
-      font-weight: 900;
-      letter-spacing: .18em;
-      text-transform: uppercase;
-      transition: .2s ease;
+      gap: 22px;
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 14px;
+      font-weight: 700;
     }
 
-    .pill:hover { background: var(--orange); border-color: var(--orange); }
-    .pill.primary { background: var(--orange); border-color: var(--orange); }
-    .pill.primary:hover { background: var(--red); border-color: var(--red); }
+    .nav-links a { text-decoration: none; }
+
+    .nav-cta {
+      padding: 11px 17px;
+      border-radius: 999px;
+      background: var(--hannah-blue);
+      color: var(--charcoal);
+      font-weight: 900;
+      box-shadow: 0 12px 34px rgba(81, 181, 224, 0.3);
+    }
 
     .hero {
+      position: relative;
       min-height: 100vh;
       display: grid;
-      align-items: end;
-      padding: 150px 6vw 90px;
-      position: relative;
-      overflow: hidden;
-      background: #050607;
+      place-items: center;
+      color: var(--white);
+      background: var(--charcoal);
+      isolation: isolate;
     }
 
-    .hero-video {
+    .hero iframe,
+    .video-bg iframe {
       position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      z-index: 0;
+      top: 50%;
+      left: 50%;
+      width: 177.77777778vh;
+      height: 56.25vw;
+      min-width: 100%;
+      min-height: 100%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      z-index: -3;
     }
 
-    .hero-overlay {
+    .hero::before {
+      content: "";
       position: absolute;
       inset: 0;
-      z-index: 1;
+      z-index: -2;
       background:
-        radial-gradient(circle at 25% 30%, rgba(232,119,34,.22), transparent 34%),
-        linear-gradient(90deg, rgba(5,6,7,.86), rgba(5,6,7,.38) 52%, rgba(5,6,7,.70)),
-        linear-gradient(180deg, rgba(16,24,32,.30), rgba(5,6,7,.92));
+        radial-gradient(circle at 22% 24%, rgba(81, 181, 224, 0.22), transparent 30%),
+        linear-gradient(90deg, rgba(20, 18, 16, 0.82) 0%, rgba(20, 18, 16, 0.56) 48%, rgba(20, 18, 16, 0.22) 100%);
     }
 
     .hero::after {
       content: "";
       position: absolute;
-      inset: 0;
-      opacity: .14;
-      background-image:
-        linear-gradient(rgba(255,255,255,.12) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,.12) 1px, transparent 1px);
-      background-size: 72px 72px;
-      pointer-events: none;
+      inset: auto 0 0;
+      height: 180px;
+      background: linear-gradient(0deg, var(--cream), transparent);
+      z-index: -1;
     }
 
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      max-width: 980px;
+    .hero-inner {
+      width: 100%;
+      max-width: var(--max);
+      padding: 150px 24px 90px;
+      display: grid;
+      grid-template-columns: minmax(0, 0.95fr) 390px;
+      gap: clamp(30px, 6vw, 76px);
+      align-items: end;
     }
 
     .eyebrow {
-      color: var(--yellow);
-      font-size: 12px;
-      font-weight: 900;
-      letter-spacing: .42em;
-      text-transform: uppercase;
-      margin-bottom: 22px;
-    }
-
-    h1, h2, h3, p { margin-top: 0; }
-
-    h1 {
-      font-size: clamp(58px, 12vw, 154px);
-      line-height: .86;
-      letter-spacing: -.07em;
-      font-weight: 900;
-      margin-bottom: 30px;
-    }
-
-    .hero p {
-      max-width: 680px;
-      color: #d3cbc2;
-      font-size: 20px;
-      line-height: 1.65;
-    }
-
-    .button-row { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 34px; }
-
-    section { padding: 105px 6vw; }
-
-    .section-dark { background: #050607; }
-    .section-light { background: var(--stone); color: var(--ink); }
-
-    .split {
-      display: grid;
-      grid-template-columns: .85fr 1.15fr;
-      gap: 70px;
-      max-width: 1240px;
-      margin: 0 auto;
-    }
-
-    h2 {
-      font-size: clamp(42px, 7vw, 92px);
-      line-height: .9;
-      letter-spacing: -.06em;
-      text-transform: uppercase;
-      font-weight: 900;
-    }
-
-    .video-frame {
-      max-width: 1240px;
-      margin: 0 auto;
-      position: relative;
-      overflow: hidden;
-      border-radius: 34px;
-      border: 1px solid rgba(255,255,255,.14);
-      min-height: 56vw;
-      max-height: 690px;
-      background:
-        linear-gradient(90deg, rgba(16,24,32,.88), rgba(16,24,32,.25)),
-        url('https://images.unsplash.com/photo-1601758063541-d2f50b4aafb2?q=80&w=1800&auto=format&fit=crop') center/cover;
-    }
-
-    .play-button {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 104px;
-      height: 104px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 12px;
+      border: 1px solid rgba(255,255,255,0.22);
       border-radius: 999px;
-      border: 1px solid rgba(255,255,255,.45);
-      background: rgba(255,255,255,.12);
-      color: white;
-      font-weight: 900;
-      letter-spacing: .18em;
+      background: rgba(255,255,255,0.12);
+      backdrop-filter: blur(14px);
+      font-size: 12px;
+      letter-spacing: 0.16em;
       text-transform: uppercase;
-      backdrop-filter: blur(12px);
-      cursor: pointer;
-    }
-
-    .video-caption {
-      position: absolute;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      padding: 40px;
-      background: linear-gradient(0deg, rgba(0,0,0,.92), transparent);
-      font-size: clamp(30px, 5vw, 64px);
-      line-height: .9;
-      letter-spacing: -.05em;
       font-weight: 900;
-      text-transform: uppercase;
-      max-width: 850px;
+      margin-bottom: 24px;
     }
 
-    .script-lines { display: grid; gap: 0; }
-    .script-line {
-      border-bottom: 1px solid rgba(255,255,255,.12);
-      padding: 28px 0;
-      font-size: clamp(28px, 5vw, 62px);
-      line-height: 1;
-      letter-spacing: -.05em;
-      font-weight: 900;
-      text-transform: uppercase;
+    .hero h1 {
+      font-size: clamp(60px, 9vw, 116px);
+      max-width: 840px;
+      margin: 0 0 24px;
     }
 
-    .copy-large {
-      font-size: 21px;
-      line-height: 1.65;
-      color: #4f4740;
+    .hero-subhead {
+      font-size: clamp(19px, 2vw, 26px);
+      max-width: 720px;
+      color: rgba(255,255,255,0.88);
+      margin: 0 0 32px;
     }
 
-    .service-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 12px;
-      margin-top: 28px;
-    }
-
-    .service-card {
-      background: orange;
-      border: 1px solid #ddd3c9;
-      border-radius: 22px;
-      padding: 20px;
-      font-size: 13px;
-      font-weight: 900;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-    }
-
-    .moments {
-      max-width: 1240px;
-      margin: 0 auto;
-    }
-
-    .moments-header {
+    .actions {
       display: flex;
-      align-items: end;
-      justify-content: space-between;
-      gap: 40px;
-      margin-bottom: 42px;
-    }
-
-    .card-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 20px;
-    }
-
-    .moment-card {
-      min-height: 430px;
-      background: rgba(255,255,255,.055);
-      border: 1px solid rgba(255,255,255,.12);
-      border-radius: 34px;
-      padding: 30px;
-      transition: .25s ease;
-    }
-
-    .moment-card:hover { transform: translateY(-5px); background: rgba(255,255,255,.09); }
-
-    .icon {
-      width: 50px;
-      height: 50px;
-      border-radius: 999px;
-      display: grid;
-      place-items: center;
-      background: var(--orange);
-      margin-bottom: 34px;
-      font-size: 22px;
-    }
-
-    .label {
-      color: var(--blue);
-      font-size: 12px;
-      font-weight: 900;
-      letter-spacing: .28em;
-      text-transform: uppercase;
-    }
-
-    .moment-card h3 {
-      margin-top: 20px;
-      font-size: 34px;
-      line-height: .96;
-      letter-spacing: -.05em;
-      text-transform: uppercase;
-      font-weight: 900;
-    }
-
-    .moment-card p { color: var(--muted); line-height: 1.7; }
-
-    .marquee {
-      overflow: hidden;
-      background: #003C71;
-      border-top: 1px solid rgba(255,255,255,.12);
-      border-bottom: 1px solid rgba(255,255,255,.12);
-      padding: 30px 0;
-      white-space: nowrap;
-    }
-
-    .marquee span {
-      display: inline-block;
-      animation: marquee 28s linear infinite;
-      font-size: clamp(44px, 7vw, 96px);
-      font-weight: 900;
-      letter-spacing: -.06em;
-      text-transform: uppercase;
-    }
-
-    @keyframes marquee {
-      from { transform: translateX(0); }
-      to { transform: translateX(-50%); }
-    }
-
-    .quote-grid {
-      max-width: 1240px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: .9fr 1.1fr;
-      gap: 28px;
-    }
-
-    .quote-box, .stat-box {
-      background: rgba(255,255,255,.055);
-      border: 1px solid rgba(255,255,255,.12);
-      border-radius: 34px;
-      padding: 38px;
-    }
-
-    blockquote {
-      margin: 0;
-      font-size: clamp(32px, 5vw, 62px);
-      line-height: .96;
-      letter-spacing: -.055em;
-      font-weight: 900;
-      text-transform: uppercase;
-    }
-
-    .stats {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 16px;
-    }
-
-    .stat-box {
-      color: var(--yellow);
-      font-size: 32px;
-      line-height: .95;
-      letter-spacing: -.05em;
-      font-weight: 900;
-      text-transform: uppercase;
-    }
-
-    .contact {
-      background: var(--orange);
-      color: white;
-    }
-
-    .contact-grid {
-      max-width: 1240px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1.1fr .9fr;
-      gap: 60px;
+      flex-wrap: wrap;
+      gap: 14px;
       align-items: center;
     }
 
-    form {
-      background: var(--ink);
-      border-radius: 34px;
-      padding: 32px;
-      box-shadow: 0 30px 80px rgba(0,0,0,.25);
-    }
-
-    label {
-      display: block;
-      margin-bottom: 8px;
-      color: #aaa29a;
-      font-size: 11px;
-      font-weight: 900;
-      letter-spacing: .18em;
-      text-transform: uppercase;
-    }
-
-    input {
-      width: 100%;
-      border: 1px solid rgba(255,255,255,.14);
-      background: rgba(255,255,255,.06);
-      border-radius: 14px;
-      color: white;
-      padding: 15px 16px;
-      margin-bottom: 18px;
-      font-size: 16px;
-    }
-
-    input:focus { outline: 1px solid var(--yellow); }
-
-    button.submit {
-      width: 100%;
-      border: none;
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 52px;
+      padding: 14px 22px;
       border-radius: 999px;
-      background: var(--yellow);
-      color: var(--ink);
-      padding: 17px 24px;
-      font-size: 12px;
+      text-decoration: none;
       font-weight: 900;
-      letter-spacing: .18em;
+      transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
+    }
+
+    .btn:hover { transform: translateY(-2px); }
+
+    .btn-primary {
+      background: var(--hannah-blue);
+      color: var(--charcoal);
+      box-shadow: 0 16px 42px rgba(81, 181, 224, 0.3);
+    }
+
+    .btn-light {
+      background: var(--cream-2);
+      color: var(--charcoal);
+      box-shadow: 0 16px 38px rgba(0,0,0,0.18);
+    }
+
+    .btn-dark {
+      background: var(--charcoal);
+      color: var(--white);
+    }
+
+    .btn-outline-light {
+      color: var(--white);
+      border: 1px solid rgba(255,255,255,0.32);
+      background: rgba(255,255,255,0.08);
+      backdrop-filter: blur(12px);
+    }
+
+    .hero-trust-card {
+      background: rgba(255,250,242,0.13);
+      border: 1px solid rgba(255,255,255,0.22);
+      backdrop-filter: blur(18px);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      box-shadow: 0 18px 50px rgba(0,0,0,0.2);
+    }
+
+    .hero-trust-card h2 {
+      font-size: 32px;
+      margin: 0 0 18px;
+    }
+
+    .trust-list {
+      display: grid;
+      gap: 12px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .trust-list li {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      font-weight: 800;
+      color: rgba(255,255,255,0.88);
+    }
+
+    .check {
+      width: 24px;
+      height: 24px;
+      border-radius: 999px;
+      display: grid;
+      place-items: center;
+      flex: 0 0 auto;
+      background: rgba(81,181,224,0.96);
+      color: var(--charcoal);
+      font-size: 14px;
+      font-weight: 1000;
+    }
+
+    section { padding: 96px 24px; }
+
+    .container {
+      max-width: var(--max);
+      margin: 0 auto;
+    }
+
+    .section-kicker {
+      color: var(--hannah-blue);
+      font-size: 13px;
+      letter-spacing: 0.16em;
       text-transform: uppercase;
-      cursor: pointer;
+      font-weight: 1000;
+      margin-bottom: 14px;
+    }
+
+    .section-title {
+      font-size: clamp(44px, 5.9vw, 80px);
+      max-width: 840px;
+      margin: 0 0 22px;
+    }
+
+    .section-lede {
+      max-width: 770px;
+      font-size: 20px;
+      color: var(--muted);
+      margin: 0 0 34px;
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(30px, 5vw, 64px);
+      align-items: center;
+    }
+
+    .media-card {
+      min-height: 560px;
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      position: relative;
+      background:
+        linear-gradient(135deg, rgba(81,181,224,0.24), rgba(255,250,242,0.08)),
+        url('https://images.unsplash.com/photo-1601758124510-52d02ddb7cbd?auto=format&fit=crop&w=1200&q=80') center/cover;
+      box-shadow: var(--shadow);
+    }
+
+    .media-card.video-bg { background: var(--charcoal); isolation: isolate; }
+
+    .media-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(0deg, rgba(37,33,29,0.48), rgba(37,33,29,0.05));
+    }
+
+    .media-label {
+      position: absolute;
+      left: 26px;
+      right: 26px;
+      bottom: 26px;
+      z-index: 3;
+      color: var(--white);
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.18);
+      backdrop-filter: blur(16px);
+      border-radius: 22px;
+      padding: 20px;
+    }
+
+    .media-label strong {
+      display: block;
+      font-family: Georgia, serif;
+      font-size: 30px;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .pillar-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    .card {
+      background: var(--cream-2);
+      border: 1px solid rgba(37,33,29,0.08);
+      border-radius: var(--radius-lg);
+      padding: 26px;
+      box-shadow: 0 16px 46px rgba(37,33,29,0.08);
+    }
+
+    .card-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 16px;
+      display: grid;
+      place-items: center;
+      background: rgba(81,181,224,0.18);
+      color: var(--charcoal);
+      font-weight: 1000;
+      margin-bottom: 16px;
+    }
+
+    .card h3 {
+      font-size: 28px;
+      margin: 0 0 10px;
+    }
+
+    .card p { color: var(--muted); margin: 0; }
+
+    .society {
+      background: var(--cream-2);
+    }
+
+    .society-panel {
+      border-radius: var(--radius-xl);
+      background:
+        radial-gradient(circle at 10% 10%, rgba(81,181,224,0.16), transparent 34%),
+        linear-gradient(135deg, var(--cream), var(--cream-2));
+      padding: clamp(34px, 6vw, 68px);
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(37,33,29,0.08);
+    }
+
+    .flow-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin: 34px 0 0;
+    }
+
+    .flow-card {
+      background: rgba(255,255,255,0.68);
+      border: 1px solid rgba(37,33,29,0.08);
+      border-radius: 24px;
+      padding: 24px;
+    }
+
+    .flow-number {
+      width: 38px;
+      height: 38px;
+      border-radius: 999px;
+      display: grid;
+      place-items: center;
+      background: var(--hannah-blue);
+      color: var(--charcoal);
+      font-weight: 1000;
+      margin-bottom: 16px;
+    }
+
+    .how {
+      background: linear-gradient(180deg, var(--cream), var(--cream-3));
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+      margin: 38px 0 0;
+    }
+
+    .step {
+      position: relative;
+      background: var(--cream-2);
+      border: 1px solid rgba(37,33,29,0.08);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      min-height: 220px;
+      box-shadow: 0 16px 46px rgba(37,33,29,0.08);
+    }
+
+    .step strong {
+      display: block;
+      font-family: Georgia, serif;
+      font-size: 62px;
+      line-height: 0.85;
+      color: var(--hannah-blue);
+      margin-bottom: 24px;
+    }
+
+    .step h3 {
+      font-size: 28px;
+      margin: 0;
+    }
+
+    .dark-section {
+      background: var(--charcoal);
+      color: var(--cream-2);
+      position: relative;
+    }
+
+    .dark-section .section-lede { color: var(--light-muted); }
+
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-top: 40px;
+    }
+
+    .service-card {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+    }
+
+    .service-card h3 {
+      font-size: 30px;
+      margin: 0 0 14px;
+    }
+
+    .service-card ul {
+      margin: 0;
+      padding-left: 20px;
+      color: var(--light-muted);
+    }
+
+    .moments {
+      background: linear-gradient(180deg, var(--cream), var(--sage));
+    }
+
+    .moment-grid,
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-top: 38px;
+    }
+
+    .moment-card {
+      min-height: 320px;
+      background: var(--cream-2);
+      border: 1px solid rgba(37,33,29,0.08);
+      border-radius: var(--radius-lg);
+      padding: 30px;
+      box-shadow: 0 16px 46px rgba(37,33,29,0.08);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .moment-card .symbol {
+      color: var(--hannah-blue);
+      font-size: 42px;
+      line-height: 1;
+    }
+
+    .moment-card h3 {
+      font-size: 32px;
+      margin: 24px 0 10px;
+    }
+
+    .moment-card p { color: var(--muted); margin: 0; }
+
+    .testimonial-card {
+      background: var(--cream-2);
+      border: 1px solid rgba(37,33,29,0.08);
+      border-radius: var(--radius-lg);
+      padding: 30px;
+      box-shadow: 0 16px 46px rgba(37,33,29,0.08);
+    }
+
+    .quote-mark {
+      color: var(--hannah-blue);
+      font-family: Georgia, serif;
+      font-size: 70px;
+      line-height: 0.7;
+      margin-bottom: 18px;
+    }
+
+    .testimonial-card blockquote {
+      margin: 0 0 24px;
+      font-family: Georgia, serif;
+      font-size: 28px;
+      line-height: 1.12;
+      letter-spacing: -0.03em;
+    }
+
+    .testimonial-card p {
+      margin: 0;
+      color: var(--muted);
+      font-weight: 800;
+    }
+
+    .final-cta {
+      position: relative;
+      overflow: hidden;
+      background: var(--cream-2);
+      padding-bottom: 42px;
+    }
+
+    .cta-panel {
+      position: relative;
+      overflow: hidden;
+      border-radius: var(--radius-xl);
+      padding: clamp(38px, 7vw, 78px);
+      background: var(--charcoal);
+      color: var(--white);
+      box-shadow: var(--shadow);
+      isolation: isolate;
+    }
+
+    .cta-panel::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background:
+        radial-gradient(circle at 15% 16%, rgba(81,181,224,0.34), transparent 28%),
+        radial-gradient(circle at 86% 78%, rgba(255,250,242,0.14), transparent 32%);
+    }
+
+    .cta-panel h2 {
+      font-size: clamp(48px, 7vw, 92px);
+      margin: 0 0 20px;
+      max-width: 790px;
+    }
+
+    .cta-panel p {
+      max-width: 680px;
+      color: rgba(255,255,255,0.8);
+      font-size: 20px;
+      margin: 0 0 30px;
     }
 
     footer {
-      padding: 34px 6vw;
-      color: #aaa29a;
-      font-size: 12px;
-      letter-spacing: .14em;
-      text-transform: uppercase;
-      border-top: 1px solid rgba(255,255,255,.1);
+      background: var(--cream-2);
+      color: var(--muted);
+      padding: 28px 24px 50px;
+      font-size: 14px;
     }
 
-    @media (max-width: 900px) {
-      .nav-links { display: none; }
-      .split,
-      .quote-grid,
-      .contact-grid,
-      .card-grid { grid-template-columns: 1fr; }
-      .moments-header { display: block; }
+    footer .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    @media (max-width: 1000px) {
+      .hero-inner,
+      .split { grid-template-columns: 1fr; }
+
+      .hero-trust-card { max-width: 540px; }
+
+      .steps,
       .service-grid,
-      .stats { grid-template-columns: 1fr; }
-      section { padding: 78px 6vw; }
-      .video-frame { min-height: 72vw; }
+      .moment-grid,
+      .testimonial-grid { grid-template-columns: repeat(2, 1fr); }
+
+      .flow-grid { grid-template-columns: 1fr; }
+
+      .nav-links a:not(.nav-cta) { display: none; }
+    }
+
+    @media (max-width: 660px) {
+      .nav { padding: 16px 18px; }
+      .brand span { display: none; }
+      .brand-logo { height: 38px; }
+      .hero-inner { padding: 130px 18px 70px; }
+      .hero h1 { font-size: 58px; }
+      section { padding: 72px 18px; }
+      .pillar-grid,
+      .steps,
+      .service-grid,
+      .moment-grid,
+      .testimonial-grid { grid-template-columns: 1fr; }
+      .media-card { min-height: 420px; }
+      .actions { align-items: stretch; }
+      .btn { width: 100%; }
     }
   </style>
 </head>
 
 <body>
-  <header class="nav">
-    <a href="#top" class="brand" aria-label="Hannah Pet Hospital home">
-      <img src="./Hannah-Logo.png" alt="Hannah Pet Hospital Logo" style="height:42px; width:auto;" />
-    </a>
-
-    <nav class="nav-links" aria-label="Main navigation">
-      <a href="#care">About Hannah</a>
-      <a href="#moments">Care Plans</a>
-      <a href="#contact">Moments</a>
+  <main class="page-shell">
+    <nav class="nav" aria-label="Primary navigation">
+      <a class="brand" href="#top" aria-label="Hannah Pet Hospital home">
+        <img src="Hannah Logo White-1656713199518.png" alt="Hannah Pet Hospital" class="brand-logo" />
+        <span>Hannah Pet Hospital</span>
+      </a>
+      <div class="nav-links">
+        <a href="#difference">Why Hannah</a>
+        <a href="#society">Membership</a>
+        <a href="#care">Total Lifetime Care™</a>
+        <a href="#stories">Stories</a>
+        <a href="#join" class="nav-cta">Become a Member</a>
+      </div>
     </nav>
 
-    <a class="pill" href="#contact">Member Portal</a>
-  </header>
+    <header class="hero" id="top">
+      <!-- Replace the YouTube ID below with the final Brand Anthem video ID, if different. -->
+      <iframe
+        src="https://www.youtube.com/embed/YgNq9BWQ8yI?autoplay=1&mute=1&controls=0&loop=1&playlist=YgNq9BWQ8yI&playsinline=1&showinfo=0&modestbranding=1&rel=0"
+        title="Hannah Pet Hospital Brand Anthem"
+        frameborder="0"
+        allow="autoplay; fullscreen"
+        allowfullscreen>
+      </iframe>
 
-  <main id="top">
-    <section class="hero">
-      <video class="hero-video" autoplay muted loop playsinline poster="https://images.unsplash.com/photo-1601758063541-d2f50b4aafb2?q=80&w=1800&auto=format&fit=crop">
-        <source src="./HPH_Anthem_60s.mp4" type="video/mp4" />
-      </video>
-      <div class="hero-overlay"></div>
-
-      <div class="hero-content">
-        <div class="eyebrow">For every moment they're with us</div>
-        <h1>Hannah is here for them.</h1>
-        <p>A lifetime of small, ordinary moments — protected. Simple, complete care so nothing stands between your Pet and what they need.</p>
-        <div class="button-row">
-          <a class="pill primary" href="#care">See What Matters Most →</a>
-          <a class="pill" href="#care">Explore Total Lifetime Care™</a>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="split">
+      <div class="hero-inner">
         <div>
-          <div class="eyebrow" style="color: var(--green);">Membership</div>
-          <h2>A different way to care for the Pet you love.</h2>
-        </div>
-
-        <div>
-          <p class="copy-large">
-            Hannah Pet Hospital is exclusive veterinary care for Hannah the Pet Society Members — a relationship-based model designed to help Pets live longer, healthier, happier lives with the families who love them.
-          </p>
-
-          <p class="copy-large" style="margin-top:18px;">
-            With Total Lifetime Care™, Members receive preventive care, medical services for illness and injury, dental and emergency care, medications, diagnostics, and behavior support — bundled into one predictable monthly plan.
-          </p>
-
-          <div class="service-grid" style="margin-top:30px;">
-            <div class="service-card">One Monthly Plan</div>
-            <div class="service-card">Preventive + Routine Care</div>
-            <div class="service-card">Illness + Emergency Care</div>
-            <div class="service-card">Dental Care + Surgery</div>
-            <div class="service-card">Medications + Diagnostics</div>
-            <div class="service-card">Behavior Support + Training</div>
-          </div>
-
-          <p class="copy-large" style="margin-top:26px;">
-            Hannah was created to remove the barriers that too often stand between Pets and the care they need: affordability, behavior challenges, and difficult decisions when unexpected costs arise. The result is a veterinary partnership built around what matters most — your Pet’s quality of life.
-          </p>
-
-          <div class="button-row" style="margin-top:28px;">
-            <a class="pill primary" href="#contact">Learn About Membership</a>
-            <a class="pill" href="#contact">See If It’s Right For You</a>
+          <div class="eyebrow">For every moment they're with us</div>
+          <h1>Hannah is here for them.</h1>
+          <p class="hero-subhead">Total Lifetime Care™ gives Pet Parents access to medical and behavior care for one simple monthly fee — so nothing stands between your Pet and the care they need.</p>
+          <div class="actions">
+            <a href="#join" class="btn btn-primary">Become a Member</a>
+            <a href="#care" class="btn btn-outline-light">Explore Total Lifetime Care™</a>
           </div>
         </div>
-      </div>
-    </section>
 
-    <section id="care" class="section-light">
-      <div class="split">
-        <div>
-          <div class="eyebrow" style="color: var(--red);">Total Lifetime Care™</div>
-          <h2>Care for the life between visits.</h2>
+        <aside class="hero-trust-card" aria-label="Membership highlights">
+          <h2>Total Lifetime Care™</h2>
+          <ul class="trust-list">
+            <li><span class="check">✓</span>No co-pays</li>
+            <li><span class="check">✓</span>No deductibles</li>
+            <li><span class="check">✓</span>No maximums</li>
+            <li><span class="check">✓</span>Emergency care included</li>
+            <li><span class="check">✓</span>Open 24/7/365</li>
+          </ul>
+        </aside>
+      </div>
+    </header>
+
+    <section id="difference">
+      <div class="container split">
+        <div class="media-card video-bg">
+          <!-- Replace this with an Always On video embed or use a still image. -->
+          <iframe
+            src="https://www.youtube.com/embed/YgNq9BWQ8yI?autoplay=1&mute=1&controls=0&loop=1&playlist=YgNq9BWQ8yI&playsinline=1&showinfo=0&modestbranding=1&rel=0&start=8"
+            title="Hannah Always On Video"
+            frameborder="0"
+            allow="autoplay; fullscreen"
+            allowfullscreen>
+          </iframe>
+          <div class="media-label">
+            <strong>Care without financial fear.</strong>
+            <span>Helping Pet Parents say yes to the care their Pets need.</span>
+          </div>
         </div>
 
         <div>
-          <p class="copy-large">Hannah’s unique Pet care model is designed to make high-quality Pet care more accessible, predictable, and connected — so Pet Parents can focus on love, not surprise costs.</p>
-          <div class="service-grid">
-            <div class="service-card">Routine + Preventive Care</div>
-            <div class="service-card">Urgent, Illness + Emergency Care</div>
-            <div class="service-card">Dental Care + Surgery</div>
-            <div class="service-card">Medications + Diagnostics</div>
-            <div class="service-card">Behavior Support + Training</div>
-            <div class="service-card">24/7 Hannah Help Line</div>
+          <div class="section-kicker">What makes Hannah different</div>
+          <h2 class="section-title">Veterinary care built differently.</h2>
+          <p class="section-lede">Traditional veterinary care often forces Pet Parents to make medical decisions based on cost. Hannah was created to remove financial fear from Pet care so Pets can get what they need, when they need it.</p>
+
+          <div class="pillar-grid">
+            <article class="card">
+              <div class="card-icon">$</div>
+              <h3>Affordable Monthly Fee</h3>
+              <p>Simple, predictable pricing for covered care.</p>
+            </article>
+            <article class="card">
+              <div class="card-icon">+</div>
+              <h3>Comprehensive Care</h3>
+              <p>Medical, dental, emergency, diagnostics, medications, behavior support, and more.</p>
+            </article>
+            <article class="card">
+              <div class="card-icon">∞</div>
+              <h3>Lifetime Partnership</h3>
+              <p>A care relationship that grows with your Pet.</p>
+            </article>
+            <article class="card">
+              <div class="card-icon">✓</div>
+              <h3>Focus on Prevention</h3>
+              <p>Helping Pets live longer, healthier lives.</p>
+            </article>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="moments">
-      <div class="moments">
-        <div class="moments-header">
-          <h2>Built around the moments Pet Parents remember.</h2>
-          <a class="pill" href="#contact">Become a Member →</a>
+    <section class="society" id="society">
+      <div class="container society-panel">
+        <div class="split">
+          <div>
+            <div class="section-kicker">Join Hannah the Pet Society</div>
+            <h2 class="section-title">Membership starts with joining Hannah the Pet Society.</h2>
+            <p class="section-lede">Committed to advocacy for responsible Pet Parenthood, Hannah the Pet Society aims to enrich lives by offering educational resources, fostering responsible breeding, accessible healthcare plans, and a supportive care network.</p>
+            <p class="section-lede">Hannah the Pet Society proudly partners with Hannah Pet Hospital, granting Members exclusive access to Total Lifetime Care™ plans.</p>
+            <div class="actions">
+              <a href="#join" class="btn btn-dark">Become a Hannah Member</a>
+            </div>
+          </div>
+
+          <div class="flow-grid">
+            <article class="flow-card">
+              <div class="flow-number">1</div>
+              <h3>Join the Society</h3>
+              <p>Become part of a mission-driven Pet care community.</p>
+            </article>
+            <article class="flow-card">
+              <div class="flow-number">2</div>
+              <h3>Become a Member</h3>
+              <p>Access Hannah Membership benefits and services.</p>
+            </article>
+            <article class="flow-card">
+              <div class="flow-number">3</div>
+              <h3>Enroll Your Pet</h3>
+              <p>Choose the Total Lifetime Care™ plan that fits your Pet’s needs.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="how" id="how">
+      <div class="container">
+        <div class="section-kicker">How Hannah Works</div>
+        <h2 class="section-title">Simple care. One relationship.</h2>
+        <p class="section-lede">A clear path to lifelong care for the Pet you love.</p>
+
+        <div class="steps">
+          <article class="step">
+            <strong>1</strong>
+            <h3>Become a Hannah Member</h3>
+          </article>
+          <article class="step">
+            <strong>2</strong>
+            <h3>Enroll your Pet</h3>
+          </article>
+          <article class="step">
+            <strong>3</strong>
+            <h3>Pay your monthly Total Lifetime Care™ fee</h3>
+          </article>
+          <article class="step">
+            <strong>4</strong>
+            <h3>Bring your Pet in whenever they need care</h3>
+          </article>
         </div>
 
-        <div class="card-grid">
-          <article class="moment-card">
-            <div class="icon">♥</div>
-            <div class="label">The Morning Walk</div>
-            <h3>Same path. Same pace. Same joy.</h3>
-            <p>Care that protects the everyday rituals Pet Parents rely on.</p>
-          </article>
+        <div class="actions" style="margin-top: 34px;">
+          <a href="#join" class="btn btn-dark">Get Started</a>
+        </div>
+      </div>
+    </section>
 
-          <article class="moment-card">
-            <div class="icon">✓</div>
-            <div class="label">The Unexpected Day</div>
-            <h3>When everything changes, cost should not lead the conversation.</h3>
-            <p>TLC Plans help Members focus on what their Pet needs next.</p>
-          </article>
+    <section class="dark-section" id="care">
+      <div class="container">
+        <div class="section-kicker">Total Lifetime Care™</div>
+        <h2 class="section-title">Care that moves with life.</h2>
+        <p class="section-lede">From preventive visits to emergencies, Hannah is here for the moments Pet Parents never plan for — and all the ones they do.</p>
 
-          <article class="moment-card">
-            <div class="icon">∞</div>
-            <div class="label">The Years Ahead</div>
-            <h3>For every moment they're with us, we're here for them.</h3>
-            <p>A lifetime care relationship built around trust, access, and love.</p>
+        <div class="service-grid">
+          <article class="service-card">
+            <div class="card-icon">✚</div>
+            <h3>Routine Care</h3>
+            <ul>
+              <li>Exams</li>
+              <li>Vaccinations</li>
+              <li>Preventive care</li>
+              <li>Medications</li>
+            </ul>
+          </article>
+          <article class="service-card">
+            <div class="card-icon">24</div>
+            <h3>Emergency Care</h3>
+            <ul>
+              <li>Illnesses</li>
+              <li>Injuries</li>
+              <li>24/7 support</li>
+              <li>Holidays included</li>
+            </ul>
+          </article>
+          <article class="service-card">
+            <div class="card-icon">☾</div>
+            <h3>Dental Care</h3>
+            <ul>
+              <li>Cleanings</li>
+              <li>Extractions</li>
+              <li>X-rays</li>
+              <li>Dental treatment</li>
+            </ul>
+          </article>
+          <article class="service-card">
+            <div class="card-icon">⌁</div>
+            <h3>Diagnostics</h3>
+            <ul>
+              <li>Bloodwork</li>
+              <li>Digital X-rays</li>
+              <li>Ultrasound</li>
+              <li>Monitoring</li>
+            </ul>
+          </article>
+          <article class="service-card">
+            <div class="card-icon">♡</div>
+            <h3>Surgical Care</h3>
+            <ul>
+              <li>Spay & neuter</li>
+              <li>Soft tissue surgery</li>
+              <li>Orthopedic care</li>
+              <li>Specialty procedures</li>
+            </ul>
+          </article>
+          <article class="service-card">
+            <div class="card-icon">∞</div>
+            <h3>Behavior Support</h3>
+            <ul>
+              <li>Training</li>
+              <li>Counseling</li>
+              <li>Medication support</li>
+              <li>AKC programs</li>
+            </ul>
           </article>
         </div>
       </div>
     </section>
 
-    <div class="marquee" aria-hidden="true">
-      <span>Just Add Love • Preventive Care • Emergency Support • Behavior Support • Dental Care • Member Partnership • Just Add Love • Preventive Care • Emergency Support • Behavior Support • Dental Care • Member Partnership •</span>
-    </div>
+    <section class="moments">
+      <div class="container">
+        <div class="section-kicker">The moments that matter</div>
+        <h2 class="section-title">A lifetime of moments.</h2>
+        <p class="section-lede">The ordinary moments become everything. Hannah helps protect the years, routines, and memories Pet Parents never want to lose.</p>
 
-    <section>
-      <div class="quote-grid">
-        <div class="quote-box">
-          <blockquote>“For every moment they're with us, we're here for them.”</blockquote>
-        </div>
-
-        <div class="stats">
-          <div class="stat-box">No Deductibles</div>
-          <div class="stat-box">No Co-pays</div>
-          <div class="stat-box">No Maximums</div>
-          <div class="stat-box">Care Guidance 24/7</div>
+        <div class="moment-grid">
+          <article class="moment-card">
+            <div class="symbol">♥</div>
+            <div>
+              <h3>The Morning Walk</h3>
+              <p>Protecting the routines Pet Parents love.</p>
+            </div>
+          </article>
+          <article class="moment-card">
+            <div class="symbol">✓</div>
+            <div>
+              <h3>The Unexpected Emergency</h3>
+              <p>Care without financial fear when the day does not go as planned.</p>
+            </div>
+          </article>
+          <article class="moment-card">
+            <div class="symbol">∞</div>
+            <div>
+              <h3>The Aging Years</h3>
+              <p>Helping Pets stay comfortable and healthy longer.</p>
+            </div>
+          </article>
         </div>
       </div>
     </section>
 
-    <section id="contact" class="contact">
-      <div class="contact-grid">
-        <div>
-          <div class="eyebrow" style="color: rgba(255,255,255,.72);">Start the conversation</div>
-          <h2>Ready for care that keeps moving with life?</h2>
+    <section id="stories">
+      <div class="container">
+        <div class="section-kicker">Why Pet Parents choose Hannah</div>
+        <h2 class="section-title">Real stories from Hannah families.</h2>
+        <p class="section-lede">Use this section to feature Always On videos, Member testimonials, emergency stories, long-term care stories, and Pet-specific outcomes.</p>
+
+        <div class="testimonial-grid">
+          <article class="testimonial-card">
+            <div class="quote-mark">“</div>
+            <blockquote>We never had to choose between cost and care.</blockquote>
+            <p>Emergency care story</p>
+          </article>
+          <article class="testimonial-card">
+            <div class="quote-mark">“</div>
+            <blockquote>Hannah helped our senior dog live comfortably longer.</blockquote>
+            <p>Long-term chronic care story</p>
+          </article>
+          <article class="testimonial-card">
+            <div class="quote-mark">“</div>
+            <blockquote>It changed the way we think about veterinary care.</blockquote>
+            <p>New Member experience story</p>
+          </article>
         </div>
+      </div>
+    </section>
 
-        <form action="https://formspree.io/f/YOUR-FORM-ID" method="POST">
-          <label for="name">Name</label>
-          <input id="name" name="name" type="text" placeholder="Pet Parent name" required />
-
-          <label for="email">Email</label>
-          <input id="email" name="email" type="email" placeholder="you@example.com" required />
-
-          <label for="pet">Pet</label>
-          <input id="pet" name="pet" type="text" placeholder="Dog, Cat, or both" />
-
-          <button class="submit" type="submit">Request Membership Info</button>
-        </form>
+    <section class="final-cta" id="join">
+      <div class="container">
+        <div class="cta-panel">
+          <div class="section-kicker">Member testimonials</div>
+          <h2>Hannah is here for them.</h2>
+          <p>And for the families who love them. Before Hannah, every emergency felt terrifying financially. Now Members can focus on getting their Pets the care they need.</p>
+          <div class="actions">
+            <a href="https://hannahpethospital.com/join" class="btn btn-primary">Become a Member</a>
+            <a href="#care" class="btn btn-outline-light">Learn About Total Lifetime Care™</a>
+          </div>
+        </div>
       </div>
     </section>
   </main>
 
   <footer>
-    © Hannah Pet Hospital. Portland, Oregon. Replace placeholder imagery/video before publishing.
+    <div class="container">
+      <span>© Hannah Pet Hospital. Portland, Oregon.</span>
+      <span>Total Lifetime Care™ for the moments that matter most.</span>
+    </div>
   </footer>
 </body>
 </html>
+
